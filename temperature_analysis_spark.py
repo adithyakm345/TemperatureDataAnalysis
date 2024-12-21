@@ -41,7 +41,7 @@ df_avg_temp_by_state.orderBy("State").show()
 df_max_temp_by_state = df_india_2000_2010.groupBy("State", "Year").agg(max("AverageTemperature").alias("MaxTemperature"))
 
 # Get the top 10 states with the highest maximum temperature for 2000-2010
-top_10_hottest_states = df_max_temp_by_state.orderBy(desc("MaxTemperature")).limit(10)
+top_10_hottest_states = df_max_temp_by_state.orderBy(desc("MaxTemperature")).limit(15)
 
 # Show the top 10 hottest states for 2000-2010
 top_10_hottest_states.show()
@@ -50,10 +50,9 @@ top_10_hottest_states.show()
 df_min_temp_by_state = df_india_2000_2010.groupBy("State", "Year").agg(min("AverageTemperature").alias("MinTemperature"))
 
 # Get the top 10 states with the lowest minimum temperature for 2000-2010
-top_10_coldest_states = df_min_temp_by_state.orderBy(asc("MinTemperature")).limit(10)
+top_10_coldest_states = df_min_temp_by_state.orderBy(asc("MinTemperature")).limit(15)
 
 # Show the top 10 coldest states for 2000-2010
 top_10_coldest_states.show()
-
 # Stop the SparkSession
 spark.stop()
